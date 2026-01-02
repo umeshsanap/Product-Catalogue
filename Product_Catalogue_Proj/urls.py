@@ -22,3 +22,8 @@ urlpatterns = [
     path('',include('Product_Catalogue_App.urls')),
 
 ]
+
+# <--------- enable media files in development when we have to add the images------>
+
+# if settings.DEBUG:
+#     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
