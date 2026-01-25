@@ -1,0 +1,721 @@
+/* Product Catalog - Attractive E-commerce Design */
+
+:root {
+    --primary-color: #2563eb;
+    --primary-dark: #1d4ed8;
+    --accent-color: #f59e0b;
+    --accent-hover: #d97706;
+    --secondary-color: #6c757d;
+    --success-color: #10b981;
+    --danger-color: #ef4444;
+    --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    --card-shadow-hover: 0 12px 28px rgba(0, 0, 0, 0.12);
+    --catalog-bg: #fafbfc;
+    --gradient-primary: linear-gradient(135deg, #2563eb 0%, #1d4ed8 50%, #1e40af 100%);
+    --gradient-accent: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+    --bs-primary: #2563eb;
+    --bs-primary-rgb: 37, 99, 235;
+}
+
+.catalog-body,
+body {
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: var(--catalog-bg);
+    background-image: radial-gradient(circle at 20% 80%, rgba(37, 99, 235, 0.03) 0%, transparent 50%),
+                      radial-gradient(circle at 80% 20%, rgba(245, 158, 11, 0.03) 0%, transparent 50%);
+}
+
+/* Top Bar */
+.catalog-topbar {
+    background: var(--gradient-primary);
+    color: #fff;
+    font-size: 0.85rem;
+}
+
+.topbar-text {
+    opacity: 0.95;
+}
+
+/* Navbar - Product Catalog Style */
+.navbar-catalog {
+    background: #fff !important;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+}
+
+.navbar-catalog .navbar-brand {
+    color: var(--primary-color) !important;
+    font-size: 1.35rem;
+}
+
+.brand-icon {
+    width: 40px;
+    height: 40px;
+    background: var(--gradient-primary);
+    color: #fff !important;
+    border-radius: 10px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+}
+
+.navbar-catalog .nav-link {
+    color: #374151 !important;
+    font-weight: 500;
+    padding: 0.5rem 1rem !important;
+    border-radius: 8px;
+    transition: all 0.25s ease;
+}
+
+.navbar-catalog .nav-link:hover {
+    color: var(--primary-color) !important;
+    background: rgba(37, 99, 235, 0.08);
+}
+
+.navbar-catalog .nav-link.active {
+    color: var(--primary-color) !important;
+    background: rgba(37, 99, 235, 0.1);
+    font-weight: 600;
+}
+
+main {
+    flex: 1;
+}
+
+.navbar-catalog .navbar-toggler {
+    border-color: rgba(55, 65, 81, 0.3);
+}
+
+.navbar-catalog .navbar-toggler:focus {
+    box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.25);
+}
+
+/* Hero Section */
+.hero-section {
+    background: linear-gradient(135deg, #0d6efd 0%, #0a58ca 100%);
+}
+
+.hero-with-bg {
+    position: relative;
+    min-height: 380px;
+    background-image: url('https://picsum.photos/seed/catalog-hero/1200/600');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(37, 99, 235, 0.88) 0%, rgba(29, 78, 216, 0.92) 100%);
+    z-index: 0;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+}
+
+.btn-shine {
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.btn-shine:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Feature Cards with Images */
+.feature-card {
+    transition: all 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15) !important;
+}
+
+.feature-card-img {
+    height: 180px;
+    overflow: hidden;
+    background: #f8f9fa;
+}
+
+.feature-card-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.feature-card:hover .feature-card-img img {
+    transform: scale(1.08);
+}
+
+/* CTA Section with Background */
+.cta-section {
+    min-height: 280px;
+}
+
+.cta-bg-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('https://picsum.photos/seed/shopping-cta/1200/400');
+    background-size: cover;
+    background-position: center;
+    z-index: 0;
+}
+
+.cta-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(37, 99, 235, 0.9);
+    z-index: 1;
+}
+
+.cta-content {
+    z-index: 2;
+}
+
+/* Product List Banner */
+.product-banner {
+    position: relative;
+    min-height: 160px;
+    background-image: url('https://picsum.photos/seed/product-catalog-banner/1200/400');
+    background-size: cover;
+    background-position: center;
+}
+
+.product-banner-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(37, 99, 235, 0.85) 0%, rgba(29, 78, 216, 0.9) 100%);
+    z-index: 0;
+}
+
+.product-banner-content {
+    position: relative;
+    z-index: 1;
+}
+
+/* Catalog Toolbar */
+.catalog-toolbar {
+    background: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.catalog-select {
+    width: auto;
+    min-width: 140px;
+}
+
+/* About Page */
+.about-banner {
+    position: relative;
+    min-height: 140px;
+    background-image: url('https://picsum.photos/seed/about-us/1200/350');
+    background-size: cover;
+    background-position: center;
+}
+
+.about-banner-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(37, 99, 235, 0.85) 0%, rgba(29, 78, 216, 0.9) 100%);
+    z-index: 0;
+}
+
+.about-banner-content {
+    position: relative;
+    z-index: 1;
+}
+
+.about-story-img {
+    height: 220px;
+    overflow: hidden;
+}
+
+/* Mission & Vision Cards */
+.mission-vision-card {
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    border-left: 4px solid transparent !important;
+}
+
+.mission-card {
+    border-left-color: var(--primary-color) !important;
+}
+
+.mission-card:hover {
+    box-shadow: 0 8px 24px rgba(37, 99, 235, 0.12) !important;
+}
+
+.vision-card {
+    border-left-color: var(--success-color) !important;
+}
+
+.vision-card:hover {
+    box-shadow: 0 8px 24px rgba(16, 185, 129, 0.12) !important;
+}
+
+.mv-icon-wrap {
+    transition: transform 0.3s ease;
+}
+
+.mission-vision-card:hover .mv-icon-wrap {
+    transform: scale(1.05);
+}
+
+/* About CTA */
+.about-cta {
+    min-height: 200px;
+}
+
+.about-cta-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('https://picsum.photos/seed/about-cta/1200/300');
+    background-size: cover;
+    background-position: center;
+    z-index: 0;
+}
+
+.about-cta-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(37, 99, 235, 0.88);
+    z-index: 1;
+}
+
+.about-cta-content {
+    z-index: 2;
+}
+
+.about-story-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Contact Page */
+.contact-banner {
+    position: relative;
+    min-height: 140px;
+    background-image: url('https://picsum.photos/seed/contact-us/1200/350');
+    background-size: cover;
+    background-position: center;
+}
+
+.contact-banner-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(37, 99, 235, 0.85) 0%, rgba(29, 78, 216, 0.9) 100%);
+    z-index: 0;
+}
+
+.contact-banner-content {
+    position: relative;
+    z-index: 1;
+}
+
+.contact-form-card,
+.contact-info-card {
+    border-radius: 12px;
+    transition: box-shadow 0.3s ease;
+}
+
+.contact-form-card:hover,
+.contact-info-card:hover {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08) !important;
+}
+
+.contact-info-card .mb-4 {
+    padding: 0.75rem 0;
+    border-bottom: 1px solid #f3f4f6;
+}
+
+.contact-info-card .mb-4:last-of-type {
+    border-bottom: none;
+}
+
+/* Login Page */
+.login-banner {
+    position: relative;
+    min-height: 100px;
+    background-image: url('https://picsum.photos/seed/login-catalog/1200/300');
+    background-size: cover;
+    background-position: center;
+}
+
+.login-banner-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(37, 99, 235, 0.85) 0%, rgba(29, 78, 216, 0.9) 100%);
+    z-index: 0;
+}
+
+.login-banner-content {
+    position: relative;
+    z-index: 1;
+}
+
+.login-card {
+    border-radius: 16px;
+    overflow: hidden;
+    transition: box-shadow 0.3s ease;
+}
+
+.login-card:hover {
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12) !important;
+}
+
+.login-icon-wrap {
+    transition: transform 0.3s ease;
+}
+
+.login-card:hover .login-icon-wrap {
+    transform: scale(1.05);
+}
+
+/* Feature Icons */
+.feature-icon {
+    transition: transform 0.3s ease;
+}
+
+.card:hover .feature-icon {
+    transform: scale(1.1);
+}
+
+/* Product Card Styles - Catalog Design */
+.product-card {
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    border-radius: 12px;
+    transition: all 0.35s ease;
+    overflow: hidden;
+    background: #fff;
+}
+
+.product-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--card-shadow-hover) !important;
+    border-color: rgba(37, 99, 235, 0.2);
+}
+
+.badge-featured {
+    background: var(--gradient-accent) !important;
+    font-size: 0.7rem;
+    padding: 0.35em 0.65em;
+}
+
+.card-img-wrapper {
+    position: relative;
+    overflow: hidden;
+    background-color: #f8f9fa;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-img-top {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.product-card:hover .card-img-top {
+    transform: scale(1.05);
+}
+
+/* Badge Styles */
+.badge {
+    font-weight: 500;
+    padding: 0.35em 0.65em;
+}
+
+/* Button Styles - Catalog */
+.btn {
+    border-radius: 10px;
+    font-weight: 600;
+    transition: all 0.25s ease;
+}
+
+.btn-primary {
+    background: var(--gradient-primary);
+    border: none;
+    box-shadow: 0 4px 14px rgba(37, 99, 235, 0.4);
+}
+
+.btn-primary:hover:not(:disabled) {
+    background: linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(37, 99, 235, 0.5);
+}
+
+.btn:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+/* Form Controls - Catalog */
+.form-control:focus,
+.form-select:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+.form-control,
+.form-select {
+    border-radius: 10px;
+    border: 1px solid #e5e7eb;
+}
+
+/* Footer - Product Catalog */
+.catalog-footer {
+    margin-top: auto;
+    background: var(--gradient-primary);
+    color: #fff;
+}
+
+.footer-brand .brand-icon {
+    width: 36px;
+    height: 36px;
+    font-size: 1rem;
+}
+
+.footer-links a {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.2s ease;
+}
+
+.footer-links a:hover {
+    color: #fff;
+}
+
+.footer-links li {
+    margin-bottom: 0.5rem;
+}
+
+.footer-social {
+    display: flex;
+    gap: 0.75rem;
+}
+
+.footer-social-link {
+    width: 38px;
+    height: 38px;
+    background: rgba(255, 255, 255, 0.15);
+    color: #fff;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.25s ease;
+}
+
+.footer-social-link:hover {
+    background: var(--accent-color);
+    color: #fff;
+    transform: translateY(-2px);
+}
+
+.footer-newsletter .form-control {
+    border: none;
+    border-radius: 8px 0 0 8px;
+    padding: 0.6rem 1rem;
+}
+
+.footer-newsletter .btn-accent {
+    background: var(--gradient-accent);
+    color: #fff;
+    border: none;
+    border-radius: 0 8px 8px 0;
+    padding: 0.6rem 1rem;
+    font-weight: 600;
+    transition: all 0.25s ease;
+}
+
+.footer-newsletter .btn-accent:hover {
+    opacity: 0.95;
+    transform: scale(1.02);
+}
+
+.footer-divider {
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Section Title */
+.section-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #1f2937;
+}
+
+/* Category Cards - Product Catalog */
+.category-card {
+    display: block;
+    transition: all 0.3s ease;
+}
+
+.category-card:hover {
+    transform: translateY(-4px);
+}
+
+.category-card:hover .category-icon-wrap {
+    background: rgba(37, 99, 235, 0.15) !important;
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
+}
+
+.category-icon-wrap {
+    transition: all 0.3s ease;
+}
+
+/* Stat Cards */
+.stat-card {
+    background: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    transition: all 0.3s ease;
+}
+
+.stat-card:hover {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    transform: translateY(-2px);
+}
+
+.stat-number {
+    font-size: 1.5rem;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 576px) {
+    .display-5 {
+        font-size: 1.75rem;
+    }
+    
+    .card-img-wrapper {
+        height: 180px;
+    }
+    
+    .hero-with-bg {
+        min-height: 300px;
+    }
+    
+    .feature-card-img {
+        height: 140px;
+    }
+    
+    .product-banner,
+    .about-banner,
+    .contact-banner,
+    .login-banner {
+        min-height: 120px;
+    }
+    
+    .about-story-img {
+        height: 180px;
+    }
+    
+    .cta-section {
+        min-height: 240px;
+    }
+    
+    .catalog-toolbar {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .catalog-select {
+        min-width: 100%;
+    }
+    
+    .stat-number {
+        font-size: 1.25rem;
+    }
+    
+    .about-cta {
+        min-height: 180px;
+    }
+}
+
+/* Loading and Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.product-card {
+    animation: fadeIn 0.5s ease-out;
+}
+
+/* Text Utilities */
+.text-muted {
+    color: #6c757d !important;
+}
+
+/* Card Body Flexbox */
+.card-body {
+    padding: 1.25rem;
+}
+
+/* Card radius consistency */
+.card {
+    border-radius: 12px;
+}
+
+/* Price Styling */
+.h5.text-primary {
+    font-size: 1.5rem;
+}
+
+/* Empty State */
+.alert-info {
+    border: none;
+    border-radius: 0.5rem;
+}
+
+.alert-info .display-4 {
+    color: var(--primary-color);
+    opacity: 0.5;
+}
+

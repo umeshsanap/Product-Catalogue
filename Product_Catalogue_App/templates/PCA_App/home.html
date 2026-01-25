@@ -1,0 +1,160 @@
+{% extends 'PCA_App/base.html' %}
+{% load static %}
+
+{% block title %}Home - Product Catalog{% endblock %}
+
+{% block content %}
+<!-- Hero Section with Background Image -->
+<div class="row mb-5">
+    <div class="col-12">
+        <div class="hero-section hero-with-bg rounded-4 overflow-hidden shadow-lg">
+            <div class="hero-overlay"></div>
+            <div class="hero-content text-white text-center p-5 position-relative">
+                <h1 class="display-3 fw-bold mb-3">
+                    <i class="bi bi-box-seam me-3"></i>Welcome to Product Catalog
+                </h1>
+                <p class="lead mb-4">Discover amazing products at unbeatable prices</p>
+                <a href="{% url 'Products_app:product_list' %}" class="btn btn-light btn-lg btn-shine">
+                    <i class="bi bi-arrow-right me-2"></i>Browse Products
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Shop by Category - Product Catalog -->
+<div class="row mb-5">
+    <div class="col-12">
+        <h2 class="section-title text-center mb-4">
+            <i class="bi bi-grid-3x3-gap-fill me-2 text-primary"></i>Shop by Category
+        </h2>
+    </div>
+      <div class="col-6 col-md-3 mb-3">
+        <a href="{% url 'Products_app:product_list' %}?category={{ 'Electronics'|urlencode }}" class="category-card text-decoration-none">
+            <div class="category-icon-wrap bg-primary bg-opacity-10 rounded-3 p-3 text-center">
+                <i class="bi bi-laptop text-primary display-6"></i>
+            </div>
+            <p class="fw-bold text-dark mt-2 mb-0 small">Electronics</p>
+        </a>
+    </div>
+    <div class="col-6 col-md-3 mb-3">
+        <a href="{% url 'Products_app:product_list' %}?category={{ 'Fashion'|urlencode }}" class="category-card text-decoration-none">
+            <div class="category-icon-wrap bg-success bg-opacity-10 rounded-3 p-3 text-center">
+                <i class="bi bi-bag text-success display-6"></i>
+            </div>
+            <p class="fw-bold text-dark mt-2 mb-0 small">Fashion</p>
+        </a>
+    </div>
+    <div class="col-6 col-md-3 mb-3">
+        <a href="{% url 'Products_app:product_list' %}?category={{ 'Home & Living'|urlencode }}" class="category-card text-decoration-none">
+            <div class="category-icon-wrap bg-warning bg-opacity-10 rounded-3 p-3 text-center">
+                <i class="bi bi-house-door text-warning display-6"></i>
+            </div>
+            <p class="fw-bold text-dark mt-2 mb-0 small">Home & Living</p>
+        </a>
+    </div>
+    <div class="col-6 col-md-3 mb-3">
+        <a href="{% url 'Products_app:product_list' %}?category={{ 'Gifts'|urlencode }}" class="category-card text-decoration-none">
+            <div class="category-icon-wrap bg-info bg-opacity-10 rounded-3 p-3 text-center">
+                <i class="bi bi-gift text-info display-6"></i>
+            </div>
+            <p class="fw-bold text-dark mt-2 mb-0 small">Gifts</p>
+        </a>
+    </div>
+</div>
+
+<!-- Why Choose Us - Stats -->
+<div class="row g-3 mb-5">
+    <div class="col-6 col-md-3">
+        <div class="stat-card rounded-3 p-3 text-center">
+            <span class="stat-number d-block fw-bold text-primary">10K+</span>
+            <span class="stat-label small text-muted">Products</span>
+        </div>
+    </div>
+    <div class="col-6 col-md-3">
+        <div class="stat-card rounded-3 p-3 text-center">
+            <span class="stat-number d-block fw-bold text-success">50K+</span>
+            <span class="stat-label small text-muted">Happy Customers</span>
+        </div>
+    </div>
+    <div class="col-6 col-md-3">
+        <div class="stat-card rounded-3 p-3 text-center">
+            <span class="stat-number d-block fw-bold text-warning">Free</span>
+            <span class="stat-label small text-muted">Shipping</span>
+        </div>
+    </div>
+    <div class="col-6 col-md-3">
+        <div class="stat-card rounded-3 p-3 text-center">
+            <span class="stat-number d-block fw-bold text-info">24/7</span>
+            <span class="stat-label small text-muted">Support</span>
+        </div>
+    </div>
+</div>
+
+<!-- Features Section with Images -->
+<div class="row g-4 mb-5">
+    <div class="col-md-4">
+        <div class="card h-100 text-center border-0 shadow-sm feature-card overflow-hidden">
+            <div class="feature-card-img">
+                <img src="{% static 'PCA_App/images/Express Delivery.jpg' %}" alt="Fast Delivery" class="img-fluid">
+            </div>
+            <div class="card-body p-4">
+                <div class="feature-icon mb-2">
+                    <i class="bi bi-truck display-5 text-primary"></i>
+                </div>
+                <h4 class="card-title fw-bold">Fast Delivery</h4>
+                <p class="card-text text-muted small">Quick and reliable shipping to your doorstep</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card h-100 text-center border-0 shadow-sm feature-card overflow-hidden">
+            <div class="feature-card-img">
+                <img src="{% static 'PCA_App/images/Secure Payment.jpg' %}" alt="Secure Payment" class="img-fluid">
+            </div>
+            <div class="card-body p-4">
+                <div class="feature-icon mb-2">
+                    <i class="bi bi-shield-check display-5 text-success"></i>
+                </div>
+                <h4 class="card-title fw-bold">Secure Payment</h4>
+                <p class="card-text text-muted small">Safe and secure payment options</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card h-100 text-center border-0 shadow-sm feature-card overflow-hidden">
+            <div class="feature-card-img">
+                <img src="{% static 'PCA_App/images/24_7_support.jpg' %}" alt="24/7 Support" class="img-fluid">
+            </div>
+            <div class="card-body p-4">
+                <div class="feature-icon mb-2">
+                    <i class="bi bi-headset display-5 text-info"></i>
+                </div>
+                <h4 class="card-title fw-bold">24/7 Support</h4>
+                <p class="card-text text-muted small">Round-the-clock customer service</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Call to Action with Background Image -->
+<div class="row">
+    <div class="col-12">
+        <div class="cta-section rounded-4 overflow-hidden position-relative">
+            <div class="cta-bg-img"></div>
+            <div class="cta-overlay"></div>
+            <div class="cta-content p-5 text-center position-relative">
+                <h2 class="fw-bold mb-3 text-white">Ready to Start Shopping?</h2>
+                <p class="text-white-50 mb-4">Explore our extensive product catalog and find what you need</p>
+                <a href="{% url 'Products_app:product_list' %}" class="btn btn-light btn-lg me-2">
+                    <i class="bi bi-grid me-2"></i>View Catalog
+                </a>
+                <a href="{% url 'Products_app:contact' %}" class="btn btn-outline-light btn-lg">
+                    <i class="bi bi-envelope me-2"></i>Contact Us
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+

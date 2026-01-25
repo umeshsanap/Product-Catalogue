@@ -63,6 +63,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'Product_Catalogue_App.context_processors.user_context',
             ],
         },
     },
@@ -76,12 +77,8 @@ WSGI_APPLICATION = 'Product_Catalogue_Proj.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'Products_db',
-        'USER': 'postgres',
-        'PASSWORD': 'aman',
-        'HOST': 'localhost',
-        'PORT': '5432',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
@@ -123,7 +120,8 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATICFILES_DIRS = [BASE_DIR / 'static']
+# Static files are now in app directories (Product_Catalogue_App/static/)
+# STATICFILES_DIRS = [BASE_DIR / 'static']  # Commented out since static files are in app directory
 
 # MEDIA_URL = '/media/'
 # MEDIA_ROOT = BASE_DIR / 'media'

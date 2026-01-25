@@ -1,0 +1,110 @@
+{% extends 'PCA_App/base.html' %}
+{% load static %}
+
+{% block title %}Manage Products - Product Catalog{% endblock %}
+
+{% block content %}
+<!-- Manage Products Banner -->
+<div class="product-banner rounded-4 overflow-hidden mb-4 shadow">
+    <div class="product-banner-overlay"></div>
+    <div class="product-banner-content text-white d-flex flex-wrap align-items-center justify-content-between py-4 px-4">
+        <div>
+            <h1 class="display-5 fw-bold mb-2">
+                <i class="bi bi-gear me-2"></i>Manage Products
+            </h1>
+        </div>
+        <div class="d-flex gap-2 flex-wrap">
+            <a href="{% url 'Products_app:product_list' %}" class="btn btn-outline-light btn-lg">View Catalog</a>
+            <a href="{% url 'Products_app:add_product_page' %}" class="btn btn-light btn-lg">
+                <i class="bi bi-plus-lg me-2"></i>Add Product
+            </a>
+            <button onclick="createSampleProducts()" class="btn btn-outline-light btn-lg">
+                <i class="bi bi-magic me-2"></i>Create Sample Products (40)
+            </button>
+        </div>
+    </div>
+</div>
+
+{% if products %}
+    <div class="row g-4">
+        {% for product in products %}
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+            <div class="card h-100 shadow-sm product-card admin-product-card">
+                <div class="card-img-wrapper">
+                    <img src="https://picsum.photos/seed/product{{ product.id }}/400/300" 
+                         class="card-img-top" 
+                         alt="{{ product.name }}"
+                         loading="lazy"
+                         onerror="this.onerror=null; this.src='https://picsum.photos/400/300';">
+                    {% if not product.is_available %}
+                    <span class="badge bg-danger position-absolute top-0 end-0 m-2">Out of Stock</span>
+                    {% endif %}
+                </div>
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title fw-bold">{{ product.name }}</h5>
+                    <p class="card-text text-muted small flex-grow-1">
+                        {{ product.description|truncatewords:12|default:"—" }}
+                    </p>
+                    <div class="mt-auto">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <span class="badge bg-secondary">{{ product.category }}</span>
+                            <span class="h5 text-primary mb-0 fw-bold">${{ product.price }}</span>
+                        </div>
+                        <div class="d-flex gap-2">
+                            <a href="{% url 'Products_app:edit_product_page' product.id %}" class="btn btn-primary flex-grow-1">
+                                <i class="bi bi-pencil me-1"></i>Edit
+                            </a>
+                            <a href="{% url 'Products_app:delete_product_confirm' product.id %}" class="btn btn-outline-danger">
+                                <i class="bi bi-trash"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <p class="text-muted text-center mt-4">
+        <i class="bi bi-info-circle me-1"></i>{{ products|length }} product{{ products|length|pluralize }}
+    </p>
+{% else %}
+    <div class="alert alert-info text-center py-5">
+        <i class="bi bi-inbox display-4 d-block mb-3"></i>
+        <h4 class="alert-heading">No Products Yet</h4>
+        <p class="mb-4">Add your first product to get started, or create sample products.</p>
+        <div class="d-flex gap-2 justify-content-center flex-wrap">
+            <a href="{% url 'Products_app:add_product_page' %}" class="btn btn-primary btn-lg">
+                <i class="bi bi-plus-lg me-2"></i>Add Product
+            </a>
+            <button onclick="createSampleProducts()" class="btn btn-outline-primary btn-lg">
+                <i class="bi bi-magic me-2"></i>Create Sample Products (30)
+            </button>
+        </div>
+    </div>
+{% endif %}
+{% endblock %}
+
+{% block extra_js %}
+<script>
+function createSampleProducts() {
+    if (confirm('This will create 40 sample products (10 Electronics, 10 Fashion, 10 Home & Living, 10 Gifts). Continue?')) {
+        fetch('{% url "Products_app:create_sample_products" %}', {
+            method: 'GET',
+            headers: {
+                'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]')?.value || ''
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            alert(data.message || 'Sample products created successfully!');
+            window.location.reload();
+        })
+        .catch(error => {
+            alert('Error creating sample products. Please try again.');
+            console.error('Error:', error);
+        });
+    }
+}
+</script>
+{% endblock %}
+

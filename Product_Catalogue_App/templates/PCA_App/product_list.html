@@ -1,0 +1,115 @@
+{% extends 'PCA_App/base.html' %}
+{% load static %}
+
+{% block title %}Product List - Product Catalog{% endblock %}
+
+{% block content %}
+<!-- Product Catalog Banner -->
+<div class="product-banner rounded-4 overflow-hidden mb-4 shadow">
+    <div class="product-banner-overlay"></div>
+    <div class="product-banner-content text-white d-flex flex-wrap align-items-center justify-content-between py-4 px-4">
+        <div>
+            <h1 class="display-5 fw-bold mb-2">
+                <i class="bi bi-grid-3x3-gap me-2"></i>Our Products
+            </h1>
+            <p class="mb-0 opacity-90">Browse our extensive collection of products</p>
+        </div>
+        {% if is_logged_in %}
+        <div class="d-flex gap-2 align-items-center">
+            <span class="text-white-50 small"><i class="bi bi-person-check me-1"></i>Welcome, {{ user_name }}</span>
+            <a href="{% url 'Products_app:add_product_page' %}?next=product_list" class="btn btn-light btn-lg">
+                <i class="bi bi-plus-lg me-2"></i>Add Product
+            </a>
+        </div>
+        {% endif %}
+    </div>
+</div>
+
+<!-- Catalog Toolbar - Filter & Sort -->
+<div class="catalog-toolbar rounded-3 p-3 mb-4 d-flex flex-wrap align-items-center justify-content-between gap-2">
+    <div class="d-flex flex-wrap align-items-center gap-2">
+        <span class="text-muted small"><i class="bi bi-funnel me-1"></i>Filter:</span>
+        <form method="get" action="{% url 'Products_app:product_list' %}" class="d-flex gap-2">
+            <select name="category" class="form-select form-select-sm catalog-select" onchange="this.form.submit()">
+                <option value="all" {% if selected_category == 'all' or not selected_category %}selected{% endif %}>All Categories</option>
+                {% for cat in all_categories %}
+                <option value="{{ cat }}" {% if selected_category == cat %}selected{% endif %}>{{ cat }}</option>
+                {% endfor %}
+            </select>
+        </form>
+    </div>
+    <div class="d-flex align-items-center gap-2">
+        <span class="text-muted small">
+            <i class="bi bi-grid me-1"></i>
+            {% if selected_category == 'all' or not selected_category %}
+                Showing all products
+            {% else %}
+                Category: <strong>{{ selected_category }}</strong>
+            {% endif %}
+        </span>
+    </div>
+</div>
+
+{% if products %}
+    <div class="row g-4">
+        {% for product in products %}
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+            <div class="card h-100 shadow-sm product-card">
+                <div class="card-img-wrapper">
+                    {% if forloop.first %}<span class="badge badge-featured position-absolute top-0 start-0 m-2">Featured</span>{% endif %}
+                    <img src="https://picsum.photos/seed/product{{ product.id }}/400/300" 
+                         class="card-img-top" 
+                         alt="{{ product.name }}"
+                         loading="lazy"
+                         onerror="this.onerror=null; this.src='https://picsum.photos/400/300';">
+                    {% if not product.is_available %}
+                    <span class="badge bg-danger position-absolute top-0 end-0 m-2">Out of Stock</span>
+                    {% endif %}
+                </div>
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title fw-bold">{{ product.name }}</h5>
+                    <p class="card-text text-muted small flex-grow-1">
+                        {{ product.description|truncatewords:15|default:"No description available." }}
+                    </p>
+                    <div class="mt-auto">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <span class="badge bg-secondary">{{ product.category }}</span>
+                            <span class="h5 text-primary mb-0 fw-bold">${{ product.price }}</span>
+                        </div>
+                        {% if product.is_available %}
+                        <button class="btn btn-primary w-100" disabled>
+                            <i class="bi bi-cart-plus me-1"></i>Add to Cart
+                        </button>
+                        {% else %}
+                        <button class="btn btn-secondary w-100" disabled>
+                            <i class="bi bi-x-circle me-1"></i>Unavailable
+                        </button>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    
+    <div class="row mt-4">
+        <div class="col-12">
+            <p class="text-muted text-center">
+                <i class="bi bi-info-circle me-1"></i>
+                Showing {{ products|length }} product{{ products|length|pluralize }}
+            </p>
+        </div>
+    </div>
+{% else %}
+    <div class="row">
+        <div class="col-12">
+            <div class="alert alert-info text-center py-5" role="alert">
+                <i class="bi bi-inbox display-4 d-block mb-3"></i>
+                <h4 class="alert-heading">No Products Available</h4>
+                <p class="mb-0">There are currently no products in the catalog.</p>
+            </div>
+        </div>
+    </div>
+{% endif %}
+{% endblock %}
+
